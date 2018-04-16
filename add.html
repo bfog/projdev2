@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Product</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h4>Add New Sale:</h4>
+            <label for="saleID">ID:</label><input type="text" name="id" id="saleID">
+            <label for="quantity">Quantity:</label><input type="number" name="quantity" id="quantity">
+            <button type="button">Add</button>
+        </form>
+
+        <form>
+            <h4>Add New Product:</h4>
+            <label for="productID">ID:</label><input type="text" name="id" id="productID">
+            <label for="prodName">Name:</label><input type="text" name="name" id="prodName">
+            <label>Category:</label>
+            <select name="categories">
+                <option value="medicine">Medicine</option>
+                <option value="health">Health Care Products</option>
+                <option value="accessories">Accessories</option>
+            </select>
+            <label for="stock">Stock:</label><input type="number" name="stock" id="stock">
+        </form>
+    </div>
+</body>
+</html>
