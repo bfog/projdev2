@@ -11,22 +11,36 @@
     <div class="container">
         <form>
             <h4>Add New Sale:</h4>
-            <label for="saleID">ID:</label><input type="text" name="id" id="saleID">
-            <label for="quantity">Quantity:</label><input type="number" name="quantity" id="quantity">
-            <button type="button">Add</button>
+            <div class="form-group">
+               <label for="saleID">ID:</label><input type="text" class="form-control" name="id" id="saleID">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label><input type="number" class="form-control" name="quantity" id="quantity">
+            </div>
+                <div class="form-group"><button type="button" class="btn btn-dark btn-md">Add</button></div>
+
         </form>
 
         <form>
             <h4>Add New Product:</h4>
-            <label for="productID">ID:</label><input type="text" name="id" id="productID">
-            <label for="prodName">Name:</label><input type="text" name="name" id="prodName">
+            <div class="form-group">
+               <label for="productID">ID:</label><input type="text" class="form-control" name="id" id="productID">
+            </div>
+            <div class="form-group">
+               <label for="prodName">Name:</label><input type="text" class="form-control" name="name" id="prodName">
+            </div>
+           <div class="form-group">
             <label>Category:</label>
-            <select name="categories">
-                <option value="medicine">Medicine</option>
-                <option value="health">Health Care Products</option>
-                <option value="accessories">Accessories</option>
-            </select>
-            <label for="stock">Stock:</label><input type="number" name="stock" id="stock">
+               <select class="form-control" name="categories">
+                   <option value="medicine">Medicine</option>
+                   <option value="health">Health Care Products</option>
+                   <option value="accessories">Accessories</option>
+               </select>
+            </div>
+            <div class="form-group">
+               <label for="stock">Stock:</label><input type="number" class="form-control" name="stock" id="stock">
+            </div>
+           <div class="form-group"><button type="button" class="btn btn-dark btn-md">Add</button></div>
         </form>
     </div>
 </body>
