@@ -9,22 +9,22 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form id="addSaleForm" method="post">
             <h4>Add New Sale:</h4>
             <div class="form-group">
-               <label for="saleID">ID:</label><input type="text" class="form-control" name="id" id="saleID">
+               <label for="saleID">ID:</label><input type="text" class="form-control" name="id" id="saleID" pattern="[0-9]" maxlength="6" required="required">
             </div>
             <div class="form-group">
-                <label for="quantity">Quantity:</label><input type="number" class="form-control" name="quantity" id="quantity">
+                <label for="quantity">Quantity:</label><input type="number" class="form-control" name="quantity" id="quantity" required="required">
             </div>
-                <div class="form-group"><button type="button" class="btn btn-dark btn-md">Add</button></div>
+                <div class="form-group"><input type="submit" value="Add" class="btn btn-dark btn-md"></div>
 
         </form>
 
-        <form>
+        <form id="addProductForm" method="post">
             <h4>Add New Product:</h4>
             <div class="form-group">
-               <label for="prodName">Name:</label><input type="text" class="form-control" name="name" id="prodName">
+               <label for="prodName">Name:</label><input type="text" class="form-control" name="name" id="prodName" pattern="^[A-z a-z.-]+$" required="required">
             </div>
            <div class="form-group">
             <label>Category:</label>
@@ -35,12 +35,12 @@
                </select>
             </div>
             <div class="form-group">
-               <label for="stock">Stock:</label><input type="number" class="form-control" name="stock" id="stock">
+               <label for="stock">Stock:</label><input type="number" class="form-control" name="stock" id="stock" required="required">
             </div>
            <div class="form-group">
-            <label for="price">Price:</label><input type="text" class="form-control" name="price" id="price">
+            <label for="price">Price:</label><input type="text" class="form-control" name="price" id="price" pattern="^[0-9.]+$" required="required">
            </div>
-           <div class="form-group"><button type="button" class="btn btn-dark btn-md">Add</button></div>
+           <div class="form-group"><input type="submit" value="Add" class="btn btn-dark btn-md"></div>
         </form>
     </div>
 
