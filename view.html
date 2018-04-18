@@ -62,16 +62,48 @@
 							<th scope="col" id="Category">Category</th>
 							<th scope="col" id="Stock">Stock</th>
 							<th scope="col" id="Price">Price</th>
-							<th scope="col" id="Edit">Edit</th>
 						</thead>
 						<tbody>
 							<tr ng-repeat="x in productArray | orderBy:'name' | filter:{name:Name, id:ID, category:Category}">
-								<td headers="Name">{{x.name}}</td>
-								<td headers="ID">{{x.id}}</td>
-								<td headers="Category">{{x.category}}</td>
-								<td headers="Stock">{{x.stock}}</td>
-								<td headers="Price">{{x.price}}</td>
-								<td headers="Edit"><button type="button" class="btn btn-dark btn-md">Edit</button></td>
+								<td headers="Name">
+									<div ng-hide="x.edit && list.includes('name')" ng-click="editData(x, 'name')">{{x.name}}</div>
+									<div ng-show="x.edit && list.includes('name')">
+										<input type="text" data-ng-model="x.name" placeholder="x.name">
+										<button type="button" ng-click="finalise(x, 'name')">Submit</button>
+									</div>
+								</td>
+								<td headers="ID">
+									<div ng-hide="x.edit && list.includes('id')" ng-click="editData(x, 'id')">{{x.id}}</div>
+									<div ng-show="x.edit && list.includes('id')">
+										<input type="text" data-ng-model="x.id" placeholder="x.id">
+										<button type="button" ng-click="finalise(x, 'id')">Submit</button>
+									</div>
+								</td>
+								<td headers="Category">
+									<div ng-hide="x.edit && list.includes('category')" ng-click="editData(x, 'category')">{{x.category}}</div>
+									<div ng-show="x.edit && list.includes('category')">
+										<select data-ng-model="x.category">
+											<option value="Medicine">Medicine</option>
+											<option value="Health Care">Health Care</option>
+											<option value="Accessories">Accessories</option>
+										</select>
+										<button type="button" ng-click="finalise(x, 'category')">Submit</button>
+									</div>
+								</td>
+								<td headers="Stock">
+									<div ng-hide="x.edit && list.includes('stock')" ng-click="editData(x, 'stock')">{{x.stock}}</div>
+									<div ng-show="x.edit && list.includes('stock')">
+										<input type="text" data-ng-model="x.stock" placeholder="x.stock">
+										<button type="button" ng-click="finalise(x, 'stock')">Submit</button>
+									</div>
+								</td>
+								<td headers="Price">
+									<div ng-hide="x.edit && list.includes('price')" ng-click="editData(x, 'price')">{{x.price}}</div>
+									<div ng-show="x.edit && list.includes('price')">
+										<input type="text" data-ng-model="x.price" placeholder="x.price">
+										<button type="button" ng-click="finalise(x, 'price')">Submit</button>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -82,11 +114,6 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
 	<script src="Framework/js/bootstrap.min.js"></script>
 	<script src="Framework/js/angular.min.js"></script>
-	<script>
-		var app = angular.module('myApp',[]);
-		app.controller('myCtrl', function($scope, $http){
-			$scope.productArray = [ {"id":"Null","name":"Skin Cream","category":"Health Care","stock":"100","price":"9.95"},{"id":"Null","name":"Fungal Toe Spray","category":"Health Care","stock":"25","price":"34.95"},{"id":"Null","name":"Toilet Paper","category":"Accessories","stock":"15","price":"9.95"},{"id":"Null","name":"Protein Powder","category":"Accessories","stock":"20","price":"49.95"},{"id":"Null","name":"Swiss Multivitiamin","category":"Medicine","stock":"200","price":"39.95"}];
-		});
-	</script>
+	<script src="Framework/js/view.js"></script>>
 </body>
 </html>
