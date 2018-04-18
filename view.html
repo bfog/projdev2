@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Product</title>
+	<link href="Framework/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>View Transactions</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="row">
+						<label for="Name">Name:</label>
+					</div>
+					<div class="row">
+						<input type="text" name="Name" id="Name" data-ng-model="Name">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<label for="ID">ID:</label>
+					</div>
+					<div class="row">
+						<input type="text" name="ID" id="ID" data-ng-model="ID">
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="row">
+						<label for="Category">Category:</label>
+					</div>
+					<div class="row">
+						<input type="radio" name="Category" id="Medicine" value="Medicine" data-ng-model="Category">
+						<label for="Medicine">Medicine</label>
+					</div>
+					<div class="row">
+						<input type="radio" name="Category" id="Health Care" value="Health Care" data-ng-model="Category">
+						<label for="Health Care">Health Care</label>
+					</div>
+					<div class="row">
+						<input type="radio" name="Category" id="Accessories" value="Accessories" data-ng-model="Category">
+						<label for="Accessories">Accessories</label>
+					</div>
+					<div class="row">
+						<input type="radio" name="Category" id="All" value="	" data-ng-model="Category">
+						<label for="All">All</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<th scope="col" id="Name">Name</th>
+							<th scope="col" id="ID">ID</th>
+							<th scope="col" id="Category">Category</th>
+							<th scope="col" id="Stock">Stock</th>
+							<th scope="col" id="Price">Price</th>
+							<th scope="col" id="Edit">Edit</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="x in productArray | orderBy:'name' | filter:{name:Name, id:ID, category:Category}">
+								<td headers="Name">{{x.name}}</td>
+								<td headers="ID">{{x.id}}</td>
+								<td headers="Category">{{x.category}}</td>
+								<td headers="Stock">{{x.stock}}</td>
+								<td headers="Price">{{x.price}}</td>
+								<td headers="Edit"><button type="button" class="btn btn-dark btn-md">Edit</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+	<script src="Framework/js/bootstrap.min.js"></script>
+	<script src="Framework/js/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl', function($scope, $http){
+			$scope.productArray = [ {"id":"Null","name":"Skin Cream","category":"Health Care","stock":"100","price":"9.95"},{"id":"Null","name":"Fungal Toe Spray","category":"Health Care","stock":"25","price":"34.95"},{"id":"Null","name":"Toilet Paper","category":"Accessories","stock":"15","price":"9.95"},{"id":"Null","name":"Protein Powder","category":"Accessories","stock":"20","price":"49.95"},{"id":"Null","name":"Swiss Multivitiamin","category":"Medicine","stock":"200","price":"39.95"}];
+		});
+	</script>
+</body>
+</html>
