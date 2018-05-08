@@ -28,7 +28,7 @@
 	  <div class="container">
 		 <div class="row">
 			<div class="col-md-12">
-			   <h1>View Transactions</h1>
+			   <h1>View Items</h1>
 			</div>
 		 </div>
 		 <div class="row">
@@ -48,7 +48,7 @@
 				  <input type="text" name="ID" id="ID" data-ng-model="ID">
 			   </div>
 			</div>
-			<div class="col-lg-3">
+			 <div class="col-lg-3">
 			   <div class="row">
 				  <label for="Category">Category:</label>
 			   </div>
@@ -79,7 +79,8 @@
 					 <th scope="col" id="Category">Category</th>
 					 <th scope="col" id="Stock">Stock</th>
 					 <th scope="col" id="Price">Price</th>
-					  <th scope="col" id="Edit"></th>
+					 <th scope="col" id="Edit"></th>
+					 <th scope="col" id="Delete"></th>
 				  </thead>
 				  <tbody>
 					 <tr ng-repeat="x in productArray | orderBy:'name' | filter:{name:Name, id:ID, category:Category}">
@@ -120,6 +121,9 @@
 						<td>
 							<div ng-hide="x.edit"><button type="button" ng-click="editData(x)" class="btn btn-dark btn-md">Edit</button></div>
 							<div ng-show="x.edit"><button type="submit" class="btn btn-dark btn-md">Submit</button></div>
+						</td>
+						 <td>
+							<div ng-show="x.edit"><button type="button" class="btn btn-dark btn-md">Delete</button></div>
 						</td>
 					 </tr>
 				  </tbody>
