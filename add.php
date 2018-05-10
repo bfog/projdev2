@@ -8,7 +8,8 @@
    <script type="text/javascript" src="indexValidate.js"></script>
 </head>
 <body>
-<?php include 'addSaleCheck.php'; include 'addProductCheck.php' ?>
+<?php include 'addSaleCheck.php'; include 'addProductCheck.php'; include 'include/menu.inc';?>
+<br>
     <div class="container">
         <form id="addSaleForm" method="post" action="index.php">
             <h4>Add New Sale:</h4>
@@ -34,7 +35,7 @@
            <div class="form-group">
             <label>Category:</label>
                <select class="form-control" name="categories" id="categories">
-                <?php 
+                <?php
                   $db = mysqli_connect('localhost', 'root', '', 'pharmacy');
                   if (!$db){
                     die();

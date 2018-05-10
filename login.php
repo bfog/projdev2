@@ -1,3 +1,34 @@
+<?php
+   include("config.php");
+   session_start();
+
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form
+
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
+      $sql = "SELECT id FROM admin WHERE username = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['id'];
+
+      $count = mysqli_num_rows($result);
+
+      // If result matched $myusername and $mypassword, table row must be 1 row
+
+      if($count == 1) {
+
+         $_SESSION['login_user'] = $myusername;
+
+         header("location: add.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,26 +53,6 @@
 </head>
 <body>
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <div class="container">
-         <i class="fa fa-bookmark-o fa-fw" style="font-size:24px;color:white"></i>
-        <a class="navbar-brand" href="#">pogchamp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="add.html">Add</a>
-            <a class="nav-item nav-link active" href="view.html">View <span class="sr-only"></span></a>
-          </div>
-          <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="signup.html">Sign Up</a>
-            <a class="nav-item nav-link" href="login.html">Log In</a>
-          </div>
-        </div>
-         </div>
-      </nav>
-
    <div class="limiter">
       <div class="container-login100">
          <div class="wrap-login100">
@@ -49,13 +60,13 @@
                <img src="images/img-01.png" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form">
+            <form class="login100-form validate-form" action="#" method="post">
                <span class="login100-form-title">
                   Member Login
                </span>
 
                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                  <input class="input100" type="text" name="email" placeholder="Email">
+                  <input class="input100" type="text" name="username" placeholder="Email">
                   <span class="focus-input100"></span>
                   <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -63,7 +74,7 @@
                </div>
 
                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                  <input class="input100" type="password" name="pass" placeholder="Password">
+                  <input class="input100" type="password" name="password" placeholder="Password">
                   <span class="focus-input100"></span>
                   <span class="symbol-input100">
                      <i class="fa fa-lock" aria-hidden="true"></i>
@@ -80,13 +91,13 @@
                   <span class="txt1">
                      Forgot
                   </span>
-                  <a class="txt2" href="#">
+                  <a class="txt2" href="login.php">
                      Username / Password?
                   </a>
                </div>
 
                <div class="text-center p-t-136">
-                  <a class="txt2" href="signup.html">
+                  <a class="txt2" href="login.php">
                      Create your Account
                      <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                   </a>
